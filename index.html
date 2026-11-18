@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0C0D1B" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0D1B" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230C0D1B%22/><text x=%2250%22 y=%2270%22 font-family=%22sans-serif%22 font-weight=%22900%22 font-size=%2256%22 fill=%22%23FFF9CB%22 text-anchor=%22middle%22>VI</text></svg>" />
+  <title>Grand Theft Auto VI — Previa Oficial de Lanzamiento | Rockstar Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Barra de Navegación Fija Multipágina (Estilo rockstargames.com/VI) -->
+  <header class="app-navbar" role="banner">
+    <div class="navbar-inner">
+      <a href="#hype" class="brand-lockup" data-nav-link="hype" aria-label="Ir a la portada de Grand Theft Auto VI Previa">
+        <span class="brand-vi-monogram" aria-hidden="true">VI</span>
+        <div class="brand-text">
+          <span class="brand-title">VICE CITY, EE. UU.</span>
+          <span class="brand-subtitle">Previa de Lanzamiento • 00:00</span>
+        </div>
+      </a>
+
+      <nav class="navbar-links" aria-label="Navegación principal">
+        <button type="button" class="nav-tab is-active" data-nav-btn="hype" aria-current="page">
+          <span class="nav-tab-icon" aria-hidden="true">⚡</span>
+          <span class="nav-tab-label">Portada / Hype</span>
+        </button>
+        <button type="button" class="nav-tab" data-nav-btn="trivia">
+          <span class="nav-tab-icon" aria-hidden="true">🏆</span>
+          <span class="nav-tab-label">Trivia &amp; Ranking</span>
+          <span class="nav-tab-badge" id="nav-badge-trivia">0 jug.</span>
+        </button>
+        <button type="button" class="nav-tab" data-nav-btn="bingo">
+          <span class="nav-tab-icon" aria-hidden="true">🎯</span>
+          <span class="nav-tab-label">Bingo Leonida</span>
+          <span class="nav-tab-badge" id="nav-badge-bingo">1/25</span>
+        </button>
+        <button type="button" class="nav-tab" data-nav-btn="checklist">
+          <span class="nav-tab-icon" aria-hidden="true">📺</span>
+          <span class="nav-tab-label">Checklist &amp; Videos</span>
+          <span class="nav-tab-badge" id="nav-badge-checklist">0%</span>
+        </button>
+      </nav>
+
+      <!-- Pill Rosa Pastel estilo "Resérvalo ya" de rockstargames.com/VI -->
+      <div class="navbar-countdown-pill" id="navbar-mini-clock" title="Tiempo restante hasta las 00:00">
+        <span class="mini-clock-label">00:00 EN</span>
+        <span class="mini-clock-time" id="nav-countdown-text">--:--:--</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main" id="app-main">
+    <!-- ==========================================
+         PÁGINA 1: PRINCIPAL (INTRO / HYPE)
+         ========================================== -->
+    <section id="view-hype" class="page-view is-active" aria-labelledby="hype-heading">
+      <div class="container">
+        <!-- Hero Panorámico Atardecer de Leonida inspirado en rockstargames.com/VI -->
+        <div class="hero-card">
+          <!-- Silueta decorativa de palmeras y cielo crepuscular de Leonida -->
+          <div class="hero-sunset-backdrop" aria-hidden="true">
+            <div class="hero-sun-orb"></div>
+            <svg class="hero-palms-svg" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice">
+              <path d="M980,320 C985,220 1000,150 1020,90 C990,85 955,105 935,130 C960,95 990,75 1020,78 C995,55 955,50 925,65 C960,40 1000,45 1028,68 C1015,35 985,15 950,15 C990,5 1025,28 1038,62 C1055,25 1095,10 1135,20 C1095,25 1065,45 1048,70 C1085,50 1130,55 1160,80 C1120,70 1080,75 1048,88 C1085,88 1120,110 1140,140 C1105,112 1070,100 1038,98 C1022,165 1010,235 1005,320 Z" fill="rgba(12, 13, 27, 0.55)" />
+              <path d="M140,320 C135,240 122,185 105,135 C130,132 158,148 175,168 C155,140 130,124 105,126 C126,108 158,104 182,116 C154,96 122,100 98,118 C110,92 134,76 162,76 C130,68 102,86 90,114 C76,84 44,72 12,80 C44,84 68,100 82,120 C52,104 16,108 -8,128 C24,120 56,124 82,134 C52,134 24,152 8,176 C36,154 64,144 90,142 C104,195 114,252 118,320 Z" fill="rgba(12, 13, 27, 0.42)" />
+            </svg>
+          </div>
+
+          <div class="hero-content-layer">
+            <div class="hero-eyebrow-center">
+              <span class="rockstar-eyebrow">ESTADO DE LEÓNIDA • NOCHE DE ESTRENO</span>
+            </div>
+
+            <!-- Emblema VI Monumental + Titular ArtDecoBold -->
+            <div class="hero-vi-emblem-row">
+              <div class="vi-monument-badge" aria-hidden="true">
+                <span class="vi-roman">VI</span>
+                <span class="vi-script">grand theft auto</span>
+              </div>
+            </div>
+
+            <h1 id="hype-heading" class="hero-title-artdeco">
+              PREVIA DE LANZAMIENTO
+            </h1>
+
+            <p class="hero-statement">
+              El lado más oscuro del lugar más soleado de América arranca esta medianoche. Antes de que el reloj marque las <strong>00:00</strong> y aterricemos con Jason Duval y Lucía Caminos en Vice-Dale County, compitan en la Trivia de lore, armen los cartones del Bingo de Leónida y dejen las consolas listas.
+            </p>
+
+            <!-- Cuenta Regresiva en Tiempo Real hasta las 00:00 -->
+            <div class="countdown-panel" aria-live="polite">
+              <div class="countdown-header">
+                <div>
+                  <span class="rockstar-eyebrow">DESBLOQUEO EN CONSOLAS • 00:00</span>
+                  <h2 class="countdown-title">CUENTA REGRESIVA A MEDIANOCHE</h2>
+                  <p class="countdown-subtitle" id="countdown-status-msg">Calculando tiempo exacto hasta la medianoche de hoy...</p>
+                </div>
+                <div class="countdown-actions">
+                  <button type="button" class="btn btn--primary btn--sm" id="btn-simulate-midnight" title="Probar cómo se ve al llegar las 00:00">
+                    Simular 00:00
+                  </button>
+                </div>
+              </div>
+
+              <div class="countdown-grid" id="countdown-grid">
+                <div class="time-box">
+                  <span class="time-value" id="cd-hours">00</span>
+                  <span class="time-label">HORAS</span>
+                </div>
+                <div class="time-sep" aria-hidden="true">:</div>
+                <div class="time-box">
+                  <span class="time-value" id="cd-minutes">00</span>
+                  <span class="time-label">MINUTOS</span>
+                </div>
+                <div class="time-sep" aria-hidden="true">:</div>
+                <div class="time-box">
+                  <span class="time-value" id="cd-seconds">00</span>
+                  <span class="time-label">SEGUNDOS</span>
+                </div>
+              </div>
+
+              <div class="countdown-progress-wrap">
+                <div class="countdown-progress-labels">
+                  <span>INICIO PREVIA (18:00)</span>
+                  <span id="cd-percent-label">Progreso hacia medianoche</span>
+                  <span>LANZAMIENTO (00:00)</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="cd-progress-bar" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Barra inferior estilo pie de hero de rockstargames.com/VI -->
+            <div class="hero-rockstar-meta-bar">
+              <div class="hero-meta-left">
+                <span class="hero-release-tag">DISPONIBLE ESTA NOCHE</span>
+                <strong class="hero-release-date">MEDIANOCHE • 00:00 HS</strong>
+              </div>
+
+              <div class="hero-meta-center">
+                <button type="button" class="btn btn--primary btn--lg" data-goto="trivia">
+                  Iniciar Competencia del Grupo
+                </button>
+              </div>
+
+              <div class="hero-meta-right">
+                <span class="console-platform-tag">PS5</span>
+                <span class="console-platform-tag">XBOX SERIES X|S</span>
+              </div>
+            </div>
+
+            <!-- Resumen en Vivo de la Previa -->
+            <div class="squad-status-strip" aria-label="Resumen en vivo del grupo">
+              <div class="squad-stat">
+                <span class="squad-stat-label">LÍDER ACTUAL EN TRIVIA</span>
+                <strong class="squad-stat-value" id="hype-stat-leader">Sin registros aún</strong>
+              </div>
+              <div class="squad-stat">
+                <span class="squad-stat-label">BINGO DE LEÓNIDA</span>
+                <strong class="squad-stat-value" id="hype-stat-bingo">0 casillas marcadas</strong>
+              </div>
+              <div class="squad-stat">
+                <span class="squad-stat-label">VIDEOS DE LA PREVIA</span>
+                <strong class="squad-stat-value" id="hype-stat-videos">0 / 4 vistos</strong>
+              </div>
+              <div class="squad-stat">
+                <span class="squad-stat-label">CHECKLIST PLAY &amp; SNACKS</span>
+                <strong class="squad-stat-value" id="hype-stat-checklist">0% completado</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjetas de Acceso Rápido estilo vertical/twilight de rockstargames.com/VI -->
+        <div class="section-header">
+          <div>
+            <span class="rockstar-eyebrow">COSAS DE LEÓNIDA • MÓDULOS INTERACTIVOS</span>
+            <h2 class="section-title-artdeco">Estaciones de la Previa</h2>
+          </div>
+        </div>
+
+        <div class="quick-cards-grid">
+          <!-- Tarjeta 1: Trivia (Superficie Navy #252644) -->
+          <article class="quick-card quick-card--navy">
+            <div>
+              <div class="quick-card-top">
+                <span class="rockstar-eyebrow">VER AHORA • MÓDULO 01</span>
+                <span class="quick-card-badge" id="card-badge-trivia">20 Preguntas • 6.000 pts</span>
+              </div>
+              <h3 class="quick-card-title-condensed">TRIVIA &amp; RANKING</h3>
+              <p class="quick-card-text">
+                Registra a cada amigo y compitan por el 1.º puesto en 20 preguntas de lore oficial (Fácil 200 pts, Media 300 pts, Difícil 400 pts) hasta alcanzar los 6.000 puntos y las 6 Estrellas de Búsqueda.
+              </p>
+              <ul class="quick-card-highlights">
+                <li>20 preguntas con dificultad y puntaje propio (máx. 6.000 pts)</li>
+                <li>Equivalente en Estrellas de Búsqueda (0 a 6 ★ Nivel Ejército)</li>
+                <li>Leaderboard comparativo con puntaje y estrellas del grupo</li>
+              </ul>
+            </div>
+            <div class="quick-card-footer">
+              <button type="button" class="btn btn--primary btn--full" data-goto="trivia">
+                Entrar a la Trivia y Ranking
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Bingo (Superficie Índigo #21254C) -->
+          <article class="quick-card quick-card--indigo">
+            <div>
+              <div class="quick-card-top">
+                <span class="rockstar-eyebrow">VER AHORA • MÓDULO 02</span>
+                <span class="quick-card-badge" id="card-badge-bingo">5x5 o 4x4</span>
+              </div>
+              <h3 class="quick-card-title-condensed">BINGO DE LEÓNIDA</h3>
+              <p class="quick-card-text">
+                Cartón interactivo con predicciones de lo que ocurrirá en las primeras horas jugando GTA VI cada quien en su consola: caimanes en Grassrivers, 5 estrellas tempranas, el Hotel Ocean View y la tobillera de Lucía.
+              </p>
+              <ul class="quick-card-highlights">
+                <li>Baraja el cartón para generar combinaciones únicas</li>
+                <li>Edita cualquier casilla o agrega predicciones propias</li>
+                <li>Detección automática de líneas y alerta de ¡BINGO!</li>
+              </ul>
+            </div>
+            <div class="quick-card-footer">
+              <button type="button" class="btn btn--primary btn--full" data-goto="bingo">
+                Abrir Bingo de Leónida
+              </button>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Checklist + Videos (Superficie Ciruela #31223E) -->
+          <article class="quick-card quick-card--plum">
+            <div>
+              <div class="quick-card-top">
+                <span class="rockstar-eyebrow">VER AHORA • MÓDULO 03</span>
+                <span class="quick-card-badge" id="card-badge-checklist">4 Videos + 2 Listas</span>
+              </div>
+              <h3 class="quick-card-title-condensed">WATCHLIST &amp; CHECKLIST</h3>
+              <p class="quick-card-text">
+                Los 4 videos obligatorios antes de las 00:00 (evolución de tráilers de IGN, Tráiler 1, Tráiler 2 y La Cronología de GTA de Jota.) con reproductor integrado, junto al checklist de Preparación de la Play y Snacks.
+              </p>
+              <ul class="quick-card-highlights">
+                <li>Tarjetas de video estilo Rockstar con reproductor integrado</li>
+                <li>Checklist de Play (pre-descarga, SSD, DualSense, Party)</li>
+                <li>Checklist de Snacks y ambiente con barra de progreso</li>
+              </ul>
+            </div>
+            <div class="quick-card-footer">
+              <button type="button" class="btn btn--primary btn--full" data-goto="checklist">
+                Ir a Watchlist y Checklist
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PÁGINA 2: TRIVIA CON REGISTRO Y RANKING
+         ========================================== -->
+    <section id="view-trivia" class="page-view" aria-labelledby="trivia-heading" hidden>
+      <div class="container">
+        <div class="page-header">
+          <div>
+            <span class="rockstar-eyebrow">COMPETENCIA ENTRE AMIGOS • 20 PREGUNTAS • MÁXIMO 6.000 PTS (6 ★)</span>
+            <h1 id="trivia-heading" class="page-title">TRIVIA GTA &amp; RANKING COMPARATIVO</h1>
+            <p class="page-subtitle">
+              Cada jugador se registra con su nombre, responde las 20 preguntas de la saga (Fácil: 200 pts, Media: 300 pts, Difícil: 400 pts) y obtiene su puntaje sobre 6.000 puntos junto a su Nivel de Búsqueda (0 a 6 ★).
+            </p>
+          </div>
+          <div class="page-header-actions">
+            <button type="button" class="btn btn--secondary" id="btn-trivia-show-lobby" hidden>
+              Ver Registro / Tabla de Posiciones
+            </button>
+          </div>
+        </div>
+
+        <!-- VISTA A: LOBBY DE REGISTRO + LEADERBOARD COMPARATIVO -->
+        <div id="trivia-lobby-panel" class="trivia-layout">
+          <!-- Columna Izquierda: Registro de Jugador -->
+          <div class="panel-card panel-card--indigo">
+            <div class="panel-card-header">
+              <div>
+                <span class="rockstar-eyebrow">PASO 01 • REGISTRO</span>
+                <h2 class="panel-card-title-condensed">REGISTRAR JUGADOR</h2>
+              </div>
+              <span class="badge">3 a 4+ amigos</span>
+            </div>
+
+            <p class="panel-card-desc">
+              Ingresa el nombre o apodo del amigo que va a jugar ahora. Al terminar las 20 preguntas, se guardará su puntaje exacto (sobre 6.000 pts) y sus Estrellas de Búsqueda en la Tabla de Posiciones.
+            </p>
+
+            <form id="trivia-start-form" class="trivia-register-form">
+              <div class="form-group">
+                <label for="trivia-player-name" class="form-label">Nombre del Jugador</label>
+                <div class="input-row">
+                  <input
+                    type="text"
+                    id="trivia-player-name"
+                    class="form-input"
+                    placeholder="Ej. Jesús, Carlos, Dani, Santi..."
+                    maxlength="28"
+                    autocomplete="off"
+                    required
+                  />
+                  <button type="submit" class="btn btn--primary">
+                    Comenzar Trivia (20 Preguntas)
+                  </button>
+                </div>
+                <p class="form-hint" id="trivia-form-feedback">
+                  Si un jugador vuelve a intentar con el mismo nombre, se actualizará su registro con su nuevo puntaje y estrellas.
+                </p>
+              </div>
+            </form>
+
+            <!-- Chips rápidos de jugadores sugeridos / recientes -->
+            <div class="quick-players-box">
+              <span class="quick-players-label">Selección rápida de turno:</span>
+              <div class="quick-players-chips" id="trivia-quick-players"></div>
+            </div>
+
+            <!-- Reglas de Puntuación y Estrellas de Búsqueda -->
+            <div class="rules-grid">
+              <div class="rule-item">
+                <strong class="rule-title">200 / 300 / 400 PTS</strong>
+                <span class="rule-text">5 Fáciles (200 pts), 10 Medias (300 pts) y 5 Difíciles (400 pts).</span>
+              </div>
+              <div class="rule-item">
+                <strong class="rule-title">MÁXIMO 6.000 PTS</strong>
+                <span class="rule-text">Cada 1.000 puntos acumulados suma 1 Estrella de Búsqueda (★).</span>
+              </div>
+              <div class="rule-item">
+                <strong class="rule-title">0 ★ A 6 ★★★★★★</strong>
+                <span class="rule-text">De 0 ★ (Ciudadano ejemplar) a 6.000 pts (★★★★★★ Nivel Ejército).</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Tabla de Posiciones (Leaderboard) -->
+          <div class="panel-card panel-card--plum">
+            <div class="panel-card-header">
+              <div>
+                <span class="rockstar-eyebrow">RANKING DEL GRUPO • PUNTAJE &amp; WANTED LEVEL</span>
+                <h2 class="panel-card-title-condensed">TABLA DE POSICIONES</h2>
+              </div>
+              <button type="button" class="btn btn--ghost btn--sm" id="btn-clear-leaderboard" title="Borrar todos los puntajes registrados">
+                Reiniciar Ranking
+              </button>
+            </div>
+
+            <div id="leaderboard-container" class="leaderboard-container">
+              <!-- Se renderiza dinámicamente desde app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA B: JUEGO ACTIVO DE TRIVIA -->
+        <div id="trivia-play-panel" class="panel-card panel-card--indigo trivia-play-card" hidden>
+          <div class="quiz-topbar">
+            <div class="quiz-player-pill">
+              <span class="quiz-meta-label">JUGANDO:</span>
+              <strong id="quiz-active-player">—</strong>
+            </div>
+
+            <div class="quiz-stats-row">
+              <div class="quiz-stat-pill">
+                <span>Pregunta</span>
+                <strong id="quiz-progress-text">1 / 20</strong>
+              </div>
+              <div class="quiz-stat-pill">
+                <span>Puntaje</span>
+                <strong id="quiz-live-score">0 / 6.000 pts</strong>
+              </div>
+              <div class="quiz-stat-pill" id="quiz-wanted-pill">
+                <span>Búsqueda</span>
+                <strong id="quiz-live-stars" class="wanted-stars-inline">☆☆☆☆☆☆</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra de progreso de las 20 preguntas -->
+          <div class="quiz-bars">
+            <div class="progress-track progress-track--thin" title="Progreso de la trivia">
+              <div class="progress-fill" id="quiz-question-bar" style="width: 5%"></div>
+            </div>
+          </div>
+
+          <div class="quiz-question-box">
+            <div class="quiz-category-row">
+              <div class="quiz-meta-badges">
+                <span class="badge badge--accent" id="quiz-category-badge">Categoría</span>
+                <span class="badge" id="quiz-difficulty-badge">Dificultad: Fácil</span>
+              </div>
+              <span class="badge badge--points" id="quiz-points-badge">Valor: 200 pts</span>
+            </div>
+            <h2 class="quiz-question-title" id="quiz-question-text">Cargando pregunta...</h2>
+          </div>
+
+          <!-- Opciones de Respuesta -->
+          <div class="quiz-options-grid" id="quiz-options-list" role="group" aria-label="Opciones de respuesta">
+            <!-- Botones generados dinámicamente -->
+          </div>
+
+          <!-- Panel de Retroalimentación y Explicación tras responder -->
+          <div id="quiz-feedback-box" class="quiz-feedback-box" hidden aria-live="polite">
+            <div class="quiz-feedback-header">
+              <div class="quiz-feedback-title-wrap">
+                <span class="quiz-feedback-badge" id="quiz-feedback-badge">¡ACIERTO!</span>
+                <strong class="quiz-feedback-points" id="quiz-feedback-points">+200 pts</strong>
+              </div>
+              <button type="button" class="btn btn--primary" id="btn-quiz-next">
+                Siguiente Pregunta →
+              </button>
+            </div>
+            <p class="quiz-feedback-explanation" id="quiz-feedback-explanation"></p>
+          </div>
+        </div>
+
+        <!-- VISTA C: RESULTADO FINAL DEL INTENTO + COMPARATIVA LEADERBOARD -->
+        <div id="trivia-result-panel" class="panel-card panel-card--violet trivia-result-card" hidden>
+          <div class="result-banner">
+            <span class="badge badge--accent" id="result-rank-badge">PUESTO #1 EN EL GRUPO</span>
+            <h2 class="result-title-condensed" id="result-title-text">¡INTENTO COMPLETADO!</h2>
+            <p class="result-subtitle" id="result-subtitle-text"></p>
+
+            <!-- Resultado Dual: Puntaje Numérico + Estrellas de Búsqueda (Wanted Level) -->
+            <div class="result-metrics-grid result-metrics-grid--3">
+              <div class="result-metric-box">
+                <span class="result-metric-label">PUNTAJE NUMÉRICO</span>
+                <strong class="result-metric-value" id="res-total-score">0 / 6.000 pts</strong>
+              </div>
+              <div class="result-metric-box result-metric-box--wanted">
+                <span class="result-metric-label">NIVEL DE BÚSQUEDA (WANTED LEVEL)</span>
+                <strong class="result-metric-value wanted-stars-display" id="res-wanted-stars">☆☆☆☆☆☆</strong>
+                <span class="wanted-rank-caption" id="res-wanted-caption">0 estrellas (Ciudadano ejemplar)</span>
+              </div>
+              <div class="result-metric-box">
+                <span class="result-metric-label">ACIERTOS TOTALES</span>
+                <strong class="result-metric-value" id="res-correct-count">0 / 20</strong>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button type="button" class="btn btn--primary" id="btn-next-friend-turn">
+                Siguiente Jugador (Turno del Próximo Amigo)
+              </button>
+              <button type="button" class="btn btn--secondary" id="btn-retry-same-player">
+                Repetir con este Jugador
+              </button>
+            </div>
+          </div>
+
+          <div class="result-leaderboard-section">
+            <h3 class="panel-card-title-condensed" style="margin-bottom: 1rem;">TABLA DE POSICIONES ACTUALIZADA</h3>
+            <div id="result-leaderboard-container" class="leaderboard-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PÁGINA 3: BINGO (BINGO DE LEONIDA)
+         ========================================== -->
+    <section id="view-bingo" class="page-view" aria-labelledby="bingo-heading" hidden>
+      <div class="container">
+        <div class="page-header">
+          <div>
+            <span class="rockstar-eyebrow">PREDICCIONES PARA LAS PRIMERAS HORAS EN CONSOLA</span>
+            <h1 id="bingo-heading" class="page-title">BINGO DE LEÓNIDA</h1>
+            <p class="page-subtitle">
+              Marca lo que vaya ocurriendo en las primeras horas jugando GTA VI. Puedes barajar para generar cartones distintos, alternar entre 5x5 y 4x4, editar cualquier casilla o agregar predicciones propias del grupo.
+            </p>
+          </div>
+
+          <div class="bingo-controls-bar">
+            <div class="bingo-select-group">
+              <label for="bingo-card-owner" class="sr-only">Cartón activo</label>
+              <select id="bingo-card-owner" class="form-select" title="Elegir cartón de jugador">
+                <option value="general">Cartón Grupal (Principal)</option>
+                <option value="amigo1">Cartón Jugador 1</option>
+                <option value="amigo2">Cartón Jugador 2</option>
+                <option value="amigo3">Cartón Jugador 3</option>
+                <option value="amigo4">Cartón Jugador 4</option>
+              </select>
+
+              <label for="bingo-grid-size" class="sr-only">Tamaño del tablero</label>
+              <select id="bingo-grid-size" class="form-select" title="Tamaño de cuadrícula">
+                <option value="5">Tablero 5x5 (25 casillas + Centro Libre)</option>
+                <option value="4">Tablero 4x4 (16 casillas)</option>
+              </select>
+            </div>
+
+            <div class="bingo-action-buttons">
+              <button type="button" class="btn btn--secondary" id="btn-bingo-view-mode" title="Alternar entre cuadrícula y tarjetas cómodas para móvil">
+                📱 Vista Tarjetas
+              </button>
+              <button type="button" class="btn btn--primary" id="btn-bingo-shuffle">
+                Barajar Cartón
+              </button>
+              <button type="button" class="btn btn--ghost" id="btn-bingo-clear-marks">
+                Desmarcar Casillas
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner automático de ¡BINGO! -->
+        <div id="bingo-win-banner" class="bingo-win-banner" hidden aria-live="polite">
+          <div class="bingo-win-content">
+            <span class="rockstar-eyebrow">¡LÍNEA COMPLETADA EN VICE-DALE COUNTY!</span>
+            <h2 class="bingo-win-title" id="bingo-win-title">¡BINGO EN LEÓNIDA!</h2>
+            <p class="bingo-win-desc" id="bingo-win-desc">Se ha completado una línea en el tablero.</p>
+          </div>
+          <div class="bingo-win-badges" id="bingo-win-lines-list"></div>
+        </div>
+
+        <!-- Barra de estado del Bingo y formulario para agregar predicción propia -->
+        <div class="bingo-toolbar-panel">
+          <div class="bingo-stats-pills">
+            <div class="stat-chip">
+              <span>Casillas marcadas:</span>
+              <strong id="bingo-stat-marked">0 / 25</strong>
+            </div>
+            <div class="stat-chip">
+              <span>Líneas de Bingo:</span>
+              <strong id="bingo-stat-lines">0</strong>
+            </div>
+          </div>
+
+          <form id="bingo-add-form" class="bingo-add-form">
+            <label for="bingo-custom-input" class="sr-only">Nueva predicción para el Bingo</label>
+            <input
+              type="text"
+              id="bingo-custom-input"
+              class="form-input"
+              placeholder="Agregar predicción propia al cartón (ej. 'Encontramos un OVNI en Mount Kalaga')..."
+              maxlength="110"
+              required
+            />
+            <button type="submit" class="btn btn--primary">
+              + Agregar al Tablero
+            </button>
+          </form>
+        </div>
+
+        <!-- Tablero Interactivo de Bingo -->
+        <div class="bingo-board-wrapper">
+          <div id="bingo-grid" class="bingo-grid bingo-grid--5" role="grid" aria-label="Tablero de Bingo de Leonida">
+            <!-- Casillas generadas dinámicamente por app.js -->
+          </div>
+        </div>
+
+        <!-- Modal/Panel inline para editar una casilla específica -->
+        <div id="bingo-edit-modal" class="modal-backdrop" hidden>
+          <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="bingo-edit-title">
+            <div class="modal-header">
+              <h3 id="bingo-edit-title" class="panel-card-title-condensed">EDITAR PREDICCIÓN DE CASILLA</h3>
+              <button type="button" class="btn-icon" id="btn-close-bingo-edit" aria-label="Cerrar editor">✕</button>
+            </div>
+            <form id="bingo-edit-form">
+              <div class="form-group">
+                <label for="bingo-edit-input" class="form-label" id="bingo-edit-coord-label">Casilla</label>
+                <textarea
+                  id="bingo-edit-input"
+                  class="form-textarea"
+                  rows="3"
+                  maxlength="110"
+                  required
+                ></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn--ghost" id="btn-cancel-bingo-edit">Cancelar</button>
+                <button type="submit" class="btn btn--primary">Guardar Predicción</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PÁGINA 4: CHECKLIST Y VIDEOS DE YOUTUBE
+         ========================================== -->
+    <section id="view-checklist" class="page-view" aria-labelledby="checklist-heading" hidden>
+      <div class="container">
+        <div class="page-header">
+          <div>
+            <span class="rockstar-eyebrow">TRÁILERS OFICIALES &amp; LOGÍSTICA DE MEDIANOCHE</span>
+            <h1 id="checklist-heading" class="page-title">WATCHLIST &amp; CHECKLIST DE LA PREVIA</h1>
+            <p class="page-subtitle">
+              Revisa los 4 videos clave para llegar con el lore fresco (puedes reproducirlos aquí mismo o abrirlos en YouTube y marcarlos como vistos) y verifica cada punto de la Play y los snacks antes de las 00:00.
+            </p>
+          </div>
+        </div>
+
+        <!-- SECCIÓN A: VIDEOS DE YOUTUBE (WATCHLIST ESTILO ROCKSTARGAMES.COM/VI) -->
+        <div class="watchlist-section">
+          <div class="section-header">
+            <div>
+              <span class="rockstar-eyebrow">VER AHORA • SELECCIÓN AUDIOVISUAL</span>
+              <h2 class="section-title-artdeco">Watchlist de la Previa</h2>
+            </div>
+            <div class="watchlist-progress-pill">
+              <span>Videos vistos:</span>
+              <strong id="watchlist-count-text">0 de 4</strong>
+            </div>
+          </div>
+
+          <!-- Reproductor Incrustado (aparece al pulsar "Reproducir Aquí") -->
+          <div id="video-theater-panel" class="video-theater-panel" hidden>
+            <div class="video-theater-header">
+              <div>
+                <span class="rockstar-eyebrow" id="theater-video-tag">REPRODUCIENDO EN LA PREVIA</span>
+                <h3 class="video-theater-title" id="theater-video-title">Título del Video</h3>
+              </div>
+              <div class="video-theater-actions">
+                <button type="button" class="btn btn--primary btn--sm" id="btn-theater-mark-watched">
+                  ✓ Marcar como Visto
+                </button>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--sm" id="btn-theater-open-yt">
+                  Abrir en YouTube ↗
+                </a>
+                <button type="button" class="btn btn--ghost btn--sm" id="btn-theater-close">
+                  Cerrar Reproductor ✕
+                </button>
+              </div>
+            </div>
+            <div class="video-embed-aspect">
+              <iframe
+                id="theater-iframe"
+                title="Reproductor de YouTube de la Previa GTA VI"
+                src="about:blank"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Grid con las 4 tarjetas de video al estilo de rockstargames.com/VI -->
+          <div id="watchlist-grid" class="watchlist-grid">
+            <!-- Renderizado dinámicamente desde app.js -->
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- SECCIÓN B: CHECKLIST INTERACTIVO DE LA PREVIA -->
+        <div class="checklist-section">
+          <div class="checklist-master-header">
+            <div>
+              <span class="rockstar-eyebrow">PRECARGA YA • ESTADO DE LAS CONSOLAS</span>
+              <h2 class="section-title-artdeco">Checklist Operativo para las 00:00</h2>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm" id="btn-reset-checklist">
+              Restablecer Checklist
+            </button>
+          </div>
+
+          <!-- Barra de Progreso General del Checklist -->
+          <div class="checklist-overall-bar-card">
+            <div class="checklist-overall-top">
+              <div>
+                <span class="rockstar-eyebrow">NIVEL DE PREPARACIÓN PARA MEDIANOCHE</span>
+                <p class="checklist-overall-status" id="checklist-status-caption">Completa las tareas antes de que el reloj llegue a 00:00.</p>
+              </div>
+              <strong class="checklist-overall-percent" id="checklist-total-percent">0%</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="checklist-total-bar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="checklist-columns-grid">
+            <!-- Categoría 1: Preparación de la Play / Consola -->
+            <div class="panel-card panel-card--navy checklist-column-card">
+              <div class="panel-card-header">
+                <div>
+                  <span class="rockstar-eyebrow">ESTACIÓN 01 • HARDWARE &amp; RED</span>
+                  <h3 class="panel-card-title-condensed">PREPARACIÓN DE LA PLAY</h3>
+                </div>
+                <strong class="checklist-cat-counter" id="chk-count-console">0/6</strong>
+              </div>
+
+              <div class="progress-track progress-track--thin">
+                <div class="progress-fill" id="chk-bar-console" style="width: 0%"></div>
+              </div>
+
+              <ul class="checklist-items-list" id="chk-list-console" aria-label="Checklist de Preparación de la Play">
+                <!-- Ítems dinámicos -->
+              </ul>
+
+              <form class="checklist-add-form" data-chk-category="console">
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Añadir ítem de consola (ej. Verificar cable LAN Gigabit)..."
+                  maxlength="90"
+                  required
+                />
+                <button type="submit" class="btn btn--primary">+ Añadir</button>
+              </form>
+            </div>
+
+            <!-- Categoría 2: Ambiente / Snacks para la Noche -->
+            <div class="panel-card panel-card--plum checklist-column-card">
+              <div class="panel-card-header">
+                <div>
+                  <span class="rockstar-eyebrow">ESTACIÓN 02 • MESA DE MEDIANOCHE</span>
+                  <h3 class="panel-card-title-condensed">AMBIENTE &amp; SNACKS</h3>
+                </div>
+                <strong class="checklist-cat-counter" id="chk-count-snacks">0/6</strong>
+              </div>
+
+              <div class="progress-track progress-track--thin">
+                <div class="progress-fill" id="chk-bar-snacks" style="width: 0%"></div>
+              </div>
+
+              <ul class="checklist-items-list" id="chk-list-snacks" aria-label="Checklist de Ambiente y Snacks">
+                <!-- Ítems dinámicos -->
+              </ul>
+
+              <form class="checklist-add-form" data-chk-category="snacks">
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Añadir snack o detalle de ambiente (ej. Hielo extra)..."
+                  maxlength="90"
+                  required
+                />
+                <button type="submit" class="btn btn--primary">+ Añadir</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast de Notificación Sutil -->
+  <div id="app-toast" class="app-toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

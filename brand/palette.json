@@ -1,0 +1,34 @@
+﻿{
+  "brand": "Rockstar Games — Grand Theft Auto VI (rockstargames.com/VI)",
+  "tokens": {
+    "bg_night_indigo": "#0C0D1B",
+    "bg_night_deep": "#111117",
+    "surface_twilight_indigo": "#21254C",
+    "surface_midnight_navy": "#252644",
+    "surface_dusk_plum": "#31223E",
+    "surface_elevated_violet": "#38365D",
+    "accent_cta_pink": "#FFB2C6",
+    "accent_cta_pink_hover": "#FFC4D4",
+    "accent_cta_text": "#0C0D1B",
+    "text_display_cream": "#FFF9CB",
+    "text_pure_white": "#FFFFFF",
+    "text_muted_lavender": "#C8C2DC",
+    "sunset_violet": "#583660",
+    "sunset_magenta": "#E84C88",
+    "sunset_coral": "#FF8C5A",
+    "sunset_gold": "#FFC966",
+    "vice_cyan": "#45C4E8"
+  },
+  "dominant_captures": [
+    { "hex": "#0C0D1B", "role": "Body background principal (rgb(12, 13, 27))", "peso": 0.318 },
+    { "hex": "#21254C", "role": "Tarjeta Tráiler 2 / Superficie Índigo (rgb(33, 37, 76))", "peso": 0.085 },
+    { "hex": "#252644", "role": "Tarjeta Precarga / Superficie Navy (rgb(37, 38, 68))", "peso": 0.072 },
+    { "hex": "#31223E", "role": "Tarjeta Tráiler 1 / Superficie Ciruela (rgb(49, 34, 62))", "peso": 0.064 },
+    { "hex": "#38365D", "role": "Panel destacado / Violeta nocturno (rgb(56, 54, 93))", "peso": 0.058 },
+    { "hex": "#FFB2C6", "role": "Botón primario pill 'Resérvalo ya' (rgb(255, 178, 198))", "peso": 0.045 },
+    { "hex": "#FFF9CB", "role": "Titulares condensados ArtDeco (rgb(255, 249, 203))", "peso": 0.042 },
+    { "hex": "#583660", "role": "Cielo crepuscular de Leonida (rgb(88, 54, 96))", "peso": 0.039 },
+    { "hex": "#E84C88", "role": "Rosa neón atardecer Vice City", "peso": 0.034 },
+    { "hex": "#FF8C5A", "role": "Naranja coral horizonte de Leonida", "peso": 0.029 }
+  ]
+}

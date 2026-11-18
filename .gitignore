@@ -1,0 +1,9 @@
+# Capturas y fotos de referencia de brand-research (no públicas)
+brand/capturas/
+brand/fotos/
+brand/generadas/
+
+# Herramientas de prueba y temporales
+.playwright-cli/
+*.png
+*.log
