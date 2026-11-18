@@ -226,8 +226,40 @@
   }
 
   // =========================================================================
-  // 3. PÁGINA 1: CUENTA REGRESIVA EN TIEMPO REAL HASTA LAS 00:00
+  // 3. PÁGINA 1: INTRO CINEMATOGRÁFICA ROCKSTAR & CUENTA REGRESIVA A LA 1:00 AM (VENEZUELA)
   // =========================================================================
+  function playRockstarIntroSequence() {
+    const overlay = document.getElementById("rockstar-intro-overlay");
+    const mosaic = document.getElementById("rockstar-mosaic-frame");
+
+    if (overlay) {
+      overlay.classList.remove("is-hidden");
+      setTimeout(() => {
+        overlay.classList.add("is-hidden");
+      }, 950);
+    }
+
+    if (mosaic) {
+      mosaic.classList.remove("is-animating", "is-assembled");
+      void mosaic.offsetWidth; // Reflow para reiniciar animación CSS
+      mosaic.classList.add("is-animating");
+      setTimeout(() => {
+        mosaic.classList.add("is-assembled");
+      }, 1750);
+    }
+  }
+
+  function initRockstarIntro() {
+    playRockstarIntroSequence();
+
+    const replayBtn = document.getElementById("btn-replay-intro");
+    if (replayBtn) {
+      replayBtn.addEventListener("click", () => {
+        playRockstarIntroSequence();
+      });
+    }
+  }
+
   function updateCountdown() {
     const hoursEl = document.getElementById("cd-hours");
     const minutesEl = document.getElementById("cd-minutes");
@@ -241,18 +273,22 @@
       hoursEl.textContent = "00";
       minutesEl.textContent = "00";
       secondsEl.textContent = "00";
-      navClockEl.textContent = "¡00:00 YA!";
-      statusMsgEl.textContent = "¡MEDIANOCHE ALCANZADA! GTA VI YA ESTÁ DESBLOQUEADO EN LEONIDA.";
+      navClockEl.textContent = "¡1:00 AM YA!";
+      statusMsgEl.textContent = "¡1:00 AM EN VENEZUELA ALCANZADA! GTA VI YA ESTÁ DESBLOQUEADO EN LEÓNIDA.";
       progressBarEl.style.width = "100%";
       percentLabelEl.textContent = "100% • ¡Hora de entrar a Vice City!";
       return;
     }
 
     const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(24, 0, 0, 0); // Próxima medianoche 00:00:00
+    const unlockVenezuela = new Date(now);
+    // En Venezuela (UTC-4) se desbloquea a la 1:00 AM (01:00:00)
+    if (now.getHours() >= 1) {
+      unlockVenezuela.setDate(unlockVenezuela.getDate() + 1);
+    }
+    unlockVenezuela.setHours(1, 0, 0, 0);
 
-    const diffMs = Math.max(0, midnight.getTime() - now.getTime());
+    const diffMs = Math.max(0, unlockVenezuela.getTime() - now.getTime());
     const totalSeconds = Math.floor(diffMs / 1000);
     const hrs = Math.floor(totalSeconds / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
@@ -267,14 +303,14 @@
     secondsEl.textContent = sStr;
     navClockEl.textContent = `${hStr}:${mStr}:${sStr}`;
 
-    // Calcular porcentaje tomando una ventana de previa de 6 horas (18:00 a 00:00) o del día
+    // Ventana de previa de 6 horas (7:00 PM / 19:00 hasta la 1:00 AM)
     const sixHoursMs = 6 * 3600 * 1000;
     const elapsedInWindow = Math.max(0, sixHoursMs - Math.min(diffMs, sixHoursMs));
     const pct = Math.min(100, Math.round((elapsedInWindow / sixHoursMs) * 100));
 
     progressBarEl.style.width = `${pct}%`;
-    percentLabelEl.textContent = `${pct}% de la ventana de previa completada`;
-    statusMsgEl.textContent = `Faltan ${hrs}h ${mins}m ${secs}s para que den las 00:00 y arranque Grand Theft Auto VI.`;
+    percentLabelEl.textContent = `${pct}% de la previa completada hacia la 1:00 AM`;
+    statusMsgEl.textContent = `Faltan ${hrs}h ${mins}m ${secs}s para que sea la 1:00 AM en Venezuela y arranque Grand Theft Auto VI.`;
   }
 
   function initCountdown() {
@@ -282,10 +318,10 @@
     if (simBtn) {
       simBtn.addEventListener("click", () => {
         simulateMidnightMode = !simulateMidnightMode;
-        simBtn.textContent = simulateMidnightMode ? "Volver a Hora Real" : "Simular 00:00";
+        simBtn.textContent = simulateMidnightMode ? "Volver a Hora Real" : "Simular 1:00 AM";
         updateCountdown();
         if (simulateMidnightMode) {
-          showToast("⚡ ¡Simulación de las 00:00 activada! Bienvenidos a Leonida.");
+          showToast("⚡ ¡Simulación de la 1:00 AM (Venezuela) activada! Bienvenidos a Leónida.");
         }
       });
     }
@@ -665,7 +701,209 @@
     document.getElementById("res-correct-count").textContent = `${entry.correctCount} / ${totalQuestions}`;
 
     renderAllLeaderboards(entry.name);
-    showToast(`🏆 ${entry.name}: ${formatPoints(entry.score)} / 6.000 pts (${wanted.shortDisplay}) guardado.`);
+    publishScoreToRoom(entry);
+    showToast(`🏆 ${entry.name}: ${formatPoints(entry.score)} / 6.000 pts (${wanted.shortDisplay}) guardado y enviado a la Sala.`);
+  }
+
+  // =========================================================================
+  // 4.B SINCRONIZACIÓN EN VIVO ENTRE CELULARES (SALA NTFY.SH + LINK COMPARTIBLE)
+  // =========================================================================
+  let roomEventSource = null;
+
+  function getCleanRoomTopic() {
+    const codeInput = document.getElementById("trivia-room-code");
+    const rawCode = (codeInput?.value || state.roomCode || "LEONIDA-VZLA")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-_]/g, "");
+    return `gtavi-previa-room-${rawCode || "leonida-vzla"}`;
+  }
+
+  function mergeIncomingEntry(incoming) {
+    if (!incoming || !incoming.name || typeof incoming.score !== "number") return false;
+    const cleanName = String(incoming.name).trim();
+    if (!cleanName) return false;
+
+    const existingIdx = state.triviaLeaderboard.findIndex(
+      (p) => p.name.trim().toLowerCase() === cleanName.toLowerCase()
+    );
+
+    const normalized = {
+      name: cleanName,
+      score: Number(incoming.score || 0),
+      stars: Math.min(6, Math.floor(Number(incoming.score || 0) / 1000)),
+      correctCount: Number(incoming.correctCount || 0),
+      playedAt: incoming.playedAt || new Date().toISOString()
+    };
+
+    if (existingIdx >= 0) {
+      // Actualizar si es más reciente o tiene distinto puntaje
+      const prev = state.triviaLeaderboard[existingIdx];
+      if (prev.score !== normalized.score || prev.correctCount !== normalized.correctCount) {
+        state.triviaLeaderboard[existingIdx] = normalized;
+        return true;
+      }
+      return false;
+    } else {
+      state.triviaLeaderboard.push(normalized);
+      return true;
+    }
+  }
+
+  async function publishScoreToRoom(entry) {
+    const topic = getCleanRoomTopic();
+    try {
+      await fetch(`https://ntfy.sh/${topic}`, {
+        method: "POST",
+        body: JSON.stringify({
+          type: "gta6_score",
+          entry: entry
+        })
+      });
+    } catch (err) {
+      console.warn("No se pudo publicar en la sala en vivo:", err);
+    }
+  }
+
+  async function syncRoomScores(showFeedback = false) {
+    const topic = getCleanRoomTopic();
+    const statusText = document.getElementById("live-sync-status-text");
+    try {
+      const res = await fetch(`https://ntfy.sh/${topic}/json?poll=1&since=all`);
+      if (!res.ok) return;
+      const text = await res.text();
+      const lines = text.split("\n").filter(Boolean);
+      let addedOrUpdated = 0;
+
+      lines.forEach((line) => {
+        try {
+          const pkt = JSON.parse(line);
+          if (pkt.event === "message" && pkt.message) {
+            const payload = JSON.parse(pkt.message);
+            if (payload.type === "gta6_score" && payload.entry) {
+              if (mergeIncomingEntry(payload.entry)) {
+                addedOrUpdated += 1;
+              }
+            }
+          }
+        } catch (_e) {
+          // Ignorar líneas no JSON
+        }
+      });
+
+      if (addedOrUpdated > 0) {
+        saveState();
+        renderAllLeaderboards();
+      }
+      if (statusText) {
+        statusText.textContent = `Sala en Vivo activa (${state.triviaLeaderboard.length} jugadores sincronizados)`;
+      }
+      if (showFeedback) {
+        showToast(
+          addedOrUpdated > 0
+            ? `🔄 ¡Se sincronizaron ${addedOrUpdated} nuevos resultados de la sala!`
+            : "🔄 Sala al día. Todos los puntajes están sincronizados."
+        );
+      }
+    } catch (err) {
+      console.warn("Error al consultar la sala en vivo:", err);
+    }
+  }
+
+  function connectRoomStream() {
+    if (roomEventSource) {
+      roomEventSource.close();
+      roomEventSource = null;
+    }
+    if (typeof window.EventSource === "undefined") return;
+
+    const topic = getCleanRoomTopic();
+    try {
+      roomEventSource = new EventSource(`https://ntfy.sh/${topic}/sse`);
+      roomEventSource.onmessage = (ev) => {
+        try {
+          const pkt = JSON.parse(ev.data);
+          if (pkt.event === "message" && pkt.message) {
+            const payload = JSON.parse(pkt.message);
+            if (payload.type === "gta6_score" && payload.entry) {
+              if (mergeIncomingEntry(payload.entry)) {
+                saveState();
+                renderAllLeaderboards();
+                showToast(`📲 ¡Nuevo puntaje en vivo de ${payload.entry.name} (${formatPoints(payload.entry.score)} pts)!`);
+              }
+            }
+          }
+        } catch (_e) {
+          // Ignorar mensaje no válido
+        }
+      };
+    } catch (err) {
+      console.warn("No se pudo abrir SSE de sala:", err);
+    }
+  }
+
+  function shareLeaderboardLink() {
+    const compactData = state.triviaLeaderboard.map((p) => ({
+      n: p.name,
+      s: p.score,
+      c: p.correctCount
+    }));
+    const encoded = btoa(encodeURIComponent(JSON.stringify(compactData)));
+    const baseUrl = window.location.origin + window.location.pathname;
+    const roomInput = document.getElementById("trivia-room-code");
+    const roomParam = encodeURIComponent((roomInput?.value || "LEONIDA-VZLA").trim());
+    const shareUrl = `${baseUrl}?room=${roomParam}&sync=${encoded}#trivia`;
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Ranking Trivia GTA VI — Previa Oficial",
+          text: "¡Mira nuestra Tabla de Posiciones de la Trivia de GTA VI (6.000 pts)!",
+          url: shareUrl
+        })
+        .catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast("📲 Enlace con el Ranking copiado al portapapeles. ¡Pégalo en WhatsApp!");
+      });
+    }
+  }
+
+  function checkUrlSyncParam() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const roomParam = params.get("room");
+      if (roomParam) {
+        state.roomCode = roomParam.toUpperCase();
+        const roomInput = document.getElementById("trivia-room-code");
+        if (roomInput) roomInput.value = state.roomCode;
+      }
+
+      const syncParam = params.get("sync");
+      if (syncParam) {
+        const decoded = JSON.parse(decodeURIComponent(atob(syncParam)));
+        if (Array.isArray(decoded)) {
+          let merged = 0;
+          decoded.forEach((item) => {
+            if (
+              mergeIncomingEntry({
+                name: item.n,
+                score: item.s,
+                correctCount: item.c
+              })
+            ) {
+              merged += 1;
+            }
+          });
+          if (merged > 0) {
+            saveState();
+            showToast(`📲 Se fusionaron ${merged} puntajes desde el enlace compartido.`);
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("No se pudo decodificar parámetro sync:", err);
+    }
   }
 
   function showTriviaLobby(suggestNextFriend = false) {
@@ -690,7 +928,40 @@
   }
 
   function initTrivia() {
+    checkUrlSyncParam();
     renderAllLeaderboards();
+
+    // Sincronizar con la sala en vivo al arrancar y abrir stream en tiempo real
+    syncRoomScores(false);
+    connectRoomStream();
+
+    const roomInput = document.getElementById("trivia-room-code");
+    if (roomInput) {
+      if (state.roomCode) roomInput.value = state.roomCode;
+      roomInput.addEventListener("change", () => {
+        state.roomCode = roomInput.value.trim().toUpperCase() || "LEONIDA-VZLA";
+        saveState();
+        syncRoomScores(true);
+        connectRoomStream();
+      });
+    }
+
+    const syncNowBtn = document.getElementById("btn-sync-room-now");
+    if (syncNowBtn) {
+      syncNowBtn.addEventListener("click", () => {
+        syncRoomScores(true);
+      });
+    }
+
+    const shareBtn = document.getElementById("btn-share-leaderboard-link");
+    if (shareBtn) {
+      shareBtn.addEventListener("click", shareLeaderboardLink);
+    }
+
+    const shareResBtn = document.getElementById("btn-share-result-link");
+    if (shareResBtn) {
+      shareResBtn.addEventListener("click", shareLeaderboardLink);
+    }
 
     const startForm = document.getElementById("trivia-start-form");
     startForm.addEventListener("submit", (e) => {
@@ -731,7 +1002,7 @@
       state.triviaLeaderboard = [];
       saveState();
       renderAllLeaderboards();
-      showToast("Tabla de posiciones de Trivia reiniciada.");
+      showToast("Tabla de posiciones local reiniciada.");
     });
   }
 
@@ -1096,7 +1367,11 @@
                 loading="lazy"
               />
               <div class="video-thumb-overlay">
-                <span class="video-circle-play" aria-hidden="true">▶</span>
+                <span class="video-circle-play" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path d="M6 4.83167C6 4.0405 6.87525 3.56266 7.54076 3.99049L18.6915 11.1588C19.3038 11.5525 19.3038 12.4475 18.6915 12.8412L7.54076 20.0095C6.87525 20.4373 6 19.9595 6 19.1683V4.83167Z" fill="currentColor"></path>
+                  </svg>
+                </span>
                 <div class="video-poster-bottom">
                   <span class="rockstar-eyebrow">VER AHORA • ${escapeHtml(vid.channel)}</span>
                   <span class="video-poster-tag">${escapeHtml(vid.tag)}</span>
@@ -1258,11 +1533,11 @@
 
     const captionEl = document.getElementById("checklist-status-caption");
     if (totalPct === 100) {
-      captionEl.textContent = "¡100% LISTO! Consolas, controles, snacks y previa al máximo para las 00:00.";
+      captionEl.textContent = "¡100% LISTO! Consolas, controles, snacks y previa al máximo para la 1:00 AM.";
     } else if (totalPct >= 50) {
-      captionEl.textContent = `Más de la mitad lista (${doneTotal}/${allItems.length}). Afinando últimos detalles para medianoche.`;
+      captionEl.textContent = `Más de la mitad lista (${doneTotal}/${allItems.length}). Afinando últimos detalles para la 1:00 AM.`;
     } else {
-      captionEl.textContent = `${doneTotal} de ${allItems.length} tareas completadas. Revisa la Play y los snacks antes de las 00:00.`;
+      captionEl.textContent = `${doneTotal} de ${allItems.length} tareas completadas. Revisa la Play y los snacks antes de la 1:00 AM.`;
     }
   }
 
@@ -1384,6 +1659,7 @@
   // =========================================================================
   document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
+    initRockstarIntro();
     initCountdown();
     initTrivia();
     initBingo();

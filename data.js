@@ -384,12 +384,12 @@ window.GTA_PREVIA_DATA = {
       { id: "chk-c6", text: "TV / Monitor configurado en Modo Juego (HDR calibrado y VRR/120Hz activo)", done: false }
     ],
     snacks: [
-      { id: "chk-s1", text: "Bebidas frías y energéticas en la nevera listas para las 00:00", done: false },
-      { id: "chk-s2", text: "Cena / Pizzas / Snacks de medianoche pedidos o listos en mesa", done: false },
+      { id: "chk-s1", text: "Bebidas frías y energéticas en la nevera listas para la 1:00 AM", done: false },
+      { id: "chk-s2", text: "Cena / Pizzas / Snacks de madrugada pedidos o listos en mesa", done: false },
       { id: "chk-s3", text: "Iluminación ambiente lista (luces bajas o LED estilo Vice City)", done: false },
       { id: "chk-s4", text: "Celulares en modo 'No Molestar' y alarmas de mañana desactivadas", done: false },
       { id: "chk-s5", text: "Cartón de Bingo de Leonida barajado para cada jugador", done: false },
-      { id: "chk-s6", text: "Ronda de Trivia completada por los 4 amigos para definir quién manda hoy", done: false }
+      { id: "chk-s6", text: "Ronda de Trivia completada por los amigos para definir quién manda hoy", done: false }
     ]
   }
 };

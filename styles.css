@@ -2602,6 +2602,367 @@ a,
   }
 }
 
+/* ==========================================================================
+   LOGOS OFICIALES ROCKSTAR GAMES & ANIMACIÓN CINEMATOGRÁFICA DE APERTURA
+   ========================================================================== */
+.brand-vi-official-svg {
+  width: 44px;
+  height: 32px;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  transition: transform 200ms var(--ease-out);
+}
+
+/* Cortina de Apertura con el R★ Oficial de Rockstar Games */
+.rockstar-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background-color: #0C0D1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 520ms var(--ease-out);
+}
+
+.rockstar-intro-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rockstar-intro-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: rstarIntroPulse 1100ms var(--ease-out) both;
+}
+
+.rockstar-intro-rstar {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(255, 178, 198, 0.35));
+}
+
+.rockstar-intro-caption {
+  font-family: var(--font-condensed);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  color: var(--text-display-cream);
+  opacity: 0.85;
+}
+
+@keyframes rstarIntroPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Escenario Hero con las 12 Capas Oficiales del Mosaico de rockstargames.com/VI */
+.rockstar-hero-stage {
+  margin-bottom: 2rem;
+}
+
+.rockstar-stage-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.rockstar-mosaic-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #0C0D1B;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 1.15rem;
+  box-shadow: 0 28px 64px -16px rgba(0, 0, 0, 0.85);
+}
+
+.mosaic-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.mosaic-base {
+  opacity: 0.22;
+  transition: opacity 600ms var(--ease-out);
+}
+
+.rockstar-mosaic-frame.is-assembled .mosaic-base {
+  opacity: 1;
+}
+
+/* Animación escalonada de los 10 Shards Oficiales + Logo VI Oficial + Logo GTA Oficial */
+.rockstar-mosaic-frame.is-animating .mosaic-shard {
+  animation: shardAssemble 680ms var(--ease-out) both;
+  animation-delay: calc(180ms + var(--shard-i, 0) * 65ms);
+}
+
+.rockstar-mosaic-frame.is-animating .mosaic-logo-vi {
+  animation: viLogoSlam 820ms var(--ease-out) 860ms both;
+}
+
+.rockstar-mosaic-frame.is-animating .mosaic-logo-gta {
+  animation: gtaWordmarkPop 680ms var(--ease-out) 1040ms both;
+}
+
+@keyframes shardAssemble {
+  0% {
+    opacity: 0;
+    transform: scale(1.08) translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes viLogoSlam {
+  0% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gtaWordmarkPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* SVGs Oficiales de PS5, Xbox Series X|S y Chevron de rockstargames.com/VI */
+.official-platform-svg {
+  height: 18px;
+  width: auto;
+  color: rgba(255, 255, 255, 0.88);
+  display: block;
+}
+
+.official-ps5-svg {
+  height: 17px;
+}
+
+.official-xbox-svg {
+  height: 16px;
+}
+
+.hero-meta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+.rockstar-chevron-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0.65rem 0 0.35rem;
+}
+
+.rockstar-chevron-svg {
+  color: var(--accent-pink);
+  animation: chevronFloat 2.1s var(--ease-in-out) infinite;
+}
+
+@keyframes chevronFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.78;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+/* Hero Card con arte oficial de lanzamiento de GTA VI de fondo */
+.hero-card {
+  background-image:
+    linear-gradient(180deg, rgba(33, 37, 76, 0.72) 0%, rgba(49, 34, 62, 0.86) 55%, rgba(12, 13, 27, 0.96) 100%),
+    url("https://www.rockstargames.com/VI/_next/static/media/launch-trailer.0.fbrrtu5j-9_.jpg?akim=1&imdensity=1&imwidth=1920");
+  background-size: cover;
+  background-position: center top;
+}
+
+/* Animaciones escalonadas de entrada (Stagger) y micro-interacciones */
+.page-view.is-active .stagger-item {
+  animation: staggerRise 520ms var(--ease-out) both;
+  animation-delay: calc(var(--stagger-step, 1) * 70ms);
+}
+
+@keyframes staggerRise {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.time-sep {
+  animation: colonPulse 1s var(--ease-in-out) infinite;
+}
+
+@keyframes colonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Barra de Sincronización en Vivo entre Celulares (Trivia) */
+.live-room-sync-box {
+  background-color: rgba(12, 13, 27, 0.62);
+  border: 1px solid rgba(255, 178, 198, 0.28);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.live-room-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.live-room-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-display-cream);
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 3px var(--color-success-soft);
+}
+
+.live-room-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.live-room-code-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.live-room-code-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.form-input--compact {
+  padding: 0.38rem 0.65rem;
+  font-family: var(--font-condensed);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-display-cream);
+  max-width: 170px;
+}
+
+/* Pie de página con el Emblema Oficial Grand Theft Auto VI */
+.rockstar-footer {
+  margin-top: 2.5rem;
+  padding: 1.75rem 0 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rockstar-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+}
+
+.footer-official-vi-img {
+  width: 145px;
+  height: auto;
+  display: block;
+}
+
+.footer-meta-text {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 720px) {
+  .brand-vi-official-svg {
+    width: 36px;
+    height: 26px;
+  }
+
+  .hero-meta-right {
+    align-items: center;
+  }
+
+  .live-room-code-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-input--compact {
+    max-width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
